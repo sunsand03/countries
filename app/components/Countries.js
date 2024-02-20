@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import styles from '../../assets/styles/components/countries.module.scss'
+import Card from './Card';
 
 const Countries = () => {
 
@@ -19,12 +20,11 @@ const Countries = () => {
     }, [])
 
     return (
-        <div className={styles.countries}>
-            <h1>Countries</h1>
+        <div className={styles.countries}>            
             <ul>
                 {
-                   data.map((country) =>(
-                    <li key={country.tID}>{country.translations.fra.common}</li>
+                   data.map((country, index) =>(
+                    <Card key={index} country={country}/>
                    )) 
                 }
             </ul>
