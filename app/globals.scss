@@ -16,17 +16,13 @@ $white: rgb(243, 243, 243);
   align-items: center;
 }
 
-* {
+
+.main {
+  background: $white;
+  font-family: $font-1;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-body {
-  background: $white;
-  font-family: $font-1;
   // @include verticalCenter;
 }
-li {
-  list-style-type: none;
-}
+
