@@ -7,7 +7,7 @@ const Card = ({country}) => {
       <li className={styles.card}>
               <Image
                 src={country.flags.svg}
-                width={100}
+                width={150}
                 height={100}
                 alt={"flag of "+ country.translations.fra.common}
             />
