@@ -1,5 +1,11 @@
+@import '../../../app/globals.scss';
+
 .countries {
   text-align: center;
+
+  ul{
+    list-style: none;
+  }
 
   .radio-container {
     justify-content: space-around;

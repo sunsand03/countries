@@ -1,4 +1,5 @@
 
+import Countries from "./components/Countries";
 import Logo from "./components/Logo";
 import Menu from "./components/Menu";
 
@@ -7,7 +8,7 @@ export default function Home() {
     <main>
       <Logo/>
       <Menu/>
-      <h1>Accueil</h1>
+      <Countries />      
     </main>
   );
 }
