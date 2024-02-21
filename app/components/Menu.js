@@ -4,8 +4,6 @@ import React from 'react';
 import Link from 'next/link'
 import styles from '../../assets/styles/components/menu.module.scss'
 
-
-
 const Menu = () => {
 
     // Status to track active link
