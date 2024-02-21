@@ -19,6 +19,7 @@ const Menu = () => {
             <ul>
                 <li className={activeLink ==='home' ? styles['nav-active'] : ''}><Link href='/' onClick={()=> handleSetActiveLink('home')}>Home</Link></li>
                 <li className={activeLink ==='about' ? styles['nav-active'] : ''}><Link href='/about'onClick={()=> handleSetActiveLink('about')}>About the world</Link></li>
+                <li className={activeLink ==='tips' ? styles['nav-active'] : ''}><Link href='/tips'onClick={()=> handleSetActiveLink('about')}>Tips</Link></li>
             </ul>
         </div>
     );
