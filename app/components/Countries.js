@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import styles from "../../assets/styles/components/countries.module.scss";
+import styles from "../../assets/styles/pages/countries.module.scss";
 import Card from "./Card";
 
 const Countries = () => {
