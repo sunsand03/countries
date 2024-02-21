@@ -5,9 +5,17 @@ import styles from "../../assets/styles/components/countries.module.scss";
 import Card from "./Card";
 
 const Countries = () => {
+
+  // status of data retrieved by the API
   const [data, setData] = useState([]);
+
+  // status for number of countries display 
   const [rangeValue, setRangeValue] = useState(36);
+
+  // array listing the continents
   const radios = ["Africa", "America", "Asia", "Europe", "Oceania"];
+
+  // status for selected continents
   const [selectedRadio, setSelectedRadio] = useState("");
 
   // country data fetch
@@ -24,6 +32,7 @@ const Countries = () => {
 
   return (
     <div className={styles.countries}>
+
       <ul className={styles.radioContainer}>
         <input
           type="range"
@@ -44,9 +53,11 @@ const Countries = () => {
           </li>
         ))}
       </ul>
+
       {selectedRadio && (
         <button onClick={()=> setSelectedRadio("")}>Annuler la recherche</button>
       )}
+
       <ul>
         {data            
             .filter((country)=> country.continents[0].includes(selectedRadio))
@@ -55,6 +66,7 @@ const Countries = () => {
           <Card key={index} country={country} />
         ))}
       </ul>
+      
     </div>
   );
 };
