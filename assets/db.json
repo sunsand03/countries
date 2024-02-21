@@ -1,0 +1,22 @@
+{
+    "articles": [
+      {
+        "country": "Japan",
+        "content": "Explore the bustling streets of Tokyo to discover the vibrancy of urban life, immerse yourself in the tranquility of Kyoto's gardens, and savor delicious traditional Japanese cuisine at local eateries",
+        "date": 1621530288602,
+        "id": 1
+      },
+      {
+        "country": "Italy",
+        "content": "Get lost in the narrow alleys of Venice and be enchanted by its romance, delve into the ancient ruins of Rome and soak up history, then unwind on the picturesque beaches of the Amalfi Coast while indulging in delicious pizza..",
+        "date": 1621536029778,
+        "id": 2
+      },
+      {
+        "country": "New Zealand",
+        "content": "Embark on an adventure through New Zealand's breathtaking landscapes by hiking the majestic mountains of Tongariro National Park, exploring the stunning fjords of Milford Sound, and relaxing on the white sandy beaches of the Bay of Islands.",
+        "date": 1621536056135,
+        "id": 3
+      }
+    ]
+  }
