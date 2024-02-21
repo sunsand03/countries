@@ -18,7 +18,7 @@ const Menu = () => {
         <div className={styles.menu}>
             <ul>
                 <li className={activeLink ==='home' ? styles['nav-active'] : ''}><Link href='/' onClick={()=> handleSetActiveLink('home')}>Home</Link></li>
-                <li className={activeLink ==='about' ? styles['nav-active'] : ''}><Link href='/about'onClick={()=> handleSetActiveLink('about')}>About</Link></li>
+                <li className={activeLink ==='about' ? styles['nav-active'] : ''}><Link href='/about'onClick={()=> handleSetActiveLink('about')}>About the world</Link></li>
             </ul>
         </div>
     );

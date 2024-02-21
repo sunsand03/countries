@@ -1,51 +1,53 @@
 @import "../../../app/globals.scss";
 
+
 .menu {
   ul {
     display: flex;
     margin: 30px;
     list-style: none;
 
-    a {
-      text-decoration: none;
-      padding: 10px;
-      color: $color-1;
+    li {
+      transition: 0.2s;
+      cursor: pointer;
 
-      li {
-        transition: 0.2s;
-        cursor: pointer;
-
-        &:hover {
+      &:hover {
+        a {
           color: $color-3;
         }
       }
-    }
 
-    .nav-active {
-      position: relative;
+      &.nav-active {
+        position: relative;
 
-      &::after {
-        content: "";
-        height: 4px;
-        width: 0;
-        background: $color-1;
-        position: absolute;
-        border-radius: 10px;
-        bottom: -5px;
-        left: 50%;
-        transform: translateX(-50%);
-        -webkit-animation: anim 0.3s ease forwards;
-        animation: anim 0.6s ease forwards;
+        &::after {
+          content: "";
+          height: 4px;
+          width: 100%;
+          background: $color-1;
+          position: absolute;
+          border-radius: 10px;
+          bottom: -5px;
+          left: 50%;
+          transform: translateX(-50%);
+          animation: anim 0.6s ease forwards;
 
-        @-webkit-keyframes anim {
-          to {
-            width: 100%;
+          @keyframes anim {
+            to {
+              width: 100%;
+            }
           }
         }
-        @keyframes anim {
-          to {
-            width: 100%;
-          }
+      }
+
+      a {
+        text-decoration: none;
+        padding: 10px;
+        color: $color-1;
+        font-weight: 500;
+
+        &:focus {
+          outline: none;
         }
       }
     }
