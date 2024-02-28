@@ -42,6 +42,11 @@ const Tip = ({tip}) => {
         
     };
 
+    const handleDelete = ()=>{
+        axios.delete('http://localhost:3004/articles/' + tip.id);
+        window.location.reload();
+    }
+
     return (
        <div className={style.tip} style={{background: isEditing ? "#f3feff" : "white" }}>
         <div className={style.header}>
@@ -67,7 +72,13 @@ const Tip = ({tip}) => {
                     <button onClick={()=>setIsEditing(true)}>Edit</button>
                 )
             }
-            <button>Remove</button>
+            <button onClick={() => {
+                if (window.confirm("Do you really want to delete this tip ?")) {
+                    handleDelete();
+                }
+            }}>Delete</button>
+
+
         </div>
 
        </div>
