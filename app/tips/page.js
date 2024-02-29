@@ -5,6 +5,7 @@ import Logo from "../components/Logo";
 import Menu from "../components/Menu";
 import axios from "axios";
 import Article from "../components/Tip";
+import Footer from '../components/Footer';
 
 const Tips = () => {
 
@@ -74,7 +75,9 @@ const Tips = () => {
             <li key={tip.id}><Article tip={tip}/></li>
         ))}
       </ul>
+      <Footer/>
     </div>
+    
   );
 };
 

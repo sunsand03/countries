@@ -3,6 +3,7 @@ import styles from '../../assets/styles/components/about.module.scss'
 import Image from 'next/image'
 import Logo from "../components/Logo";
 import Menu from "../components/Menu";
+import Footer from "../components/Footer";
 
 const About = () => {
   return (
@@ -32,7 +33,9 @@ const About = () => {
         <li>14 in Oceania</li>
         <li>2 in Northern America</li>
       </ul>
+      <Footer/>
     </div>
+    
   );
 };
 

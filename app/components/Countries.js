@@ -20,14 +20,12 @@ const Countries = () => {
 
   // country data fetch
   useEffect(() => {
-    try {
       axios
         .get("https://restcountries.com/v3.1/all")
-        .then((response) => setData(response.data));
-      console.log(data);
-    } catch (error) {
+        .then((response) => {setData(response.data)})
+        .catch ((error) => {
       console.log("les données n'ont pas été récupérées", error);
-    }
+    })
   }, []);
 
   return (
