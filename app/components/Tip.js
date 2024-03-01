@@ -7,9 +7,13 @@ const Tip = ({tip}) => {
     const [isEditing, setIsEditing]= useState(false);
     const [editContent, setEditContent]= useState("");
 
-
+    /**
+     * Format the date
+     * @param {timestamp} date 
+     * @returns {string} the formatted date
+     */
     const dateFormatter = (date)=>{
-        let newDate = new Date(date).toLocaleDateString("fr-FR", {
+        let newDate = new Date(date).toLocaleDateString("en-US", {
             year: "numeric",
             month:"long",
             day:"numeric",
@@ -20,12 +24,14 @@ const Tip = ({tip}) => {
         return newDate;
     }
 
+    /**
+     * handle the editing of a tip 
+     */
     const handleEdit = ()=>{
         const data ={
             country : tip.country,
             content : editContent ? editContent : tip.content,
-            updatedDate: Date.now(),
-    
+            updatedDate: Date.now(),    
         };
         
         axios
@@ -33,54 +39,56 @@ const Tip = ({tip}) => {
         .then(() => {
           setIsEditing(false);
         })
-        .catch(error => {
-          // Gestion des erreurs
-          console.error('Error updating article:', error);
-          // Traitez l'erreur selon vos besoins
+        .catch(error => {          
+          console.error('Error updating article:', error);          
         });
-      
         
     };
 
-    const handleDelete = ()=>{
-        axios.delete('http://localhost:3004/articles/' + tip.id);
-        window.location.reload();
-    }
+    /**
+     * handle the deletion of a tip
+     */
+    // const handleDelete = ()=>{
+    //     axios.delete('http://localhost:3004/articles/' + tip.id);
+    //     window.location.reload();
+    // }
 
     return (
        <div className={style.tip} style={{background: isEditing ? "#f3feff" : "white" }}>
-        <div className={style.header}>
-            <h3>{tip.country}</h3>
-            <em>Posté le {dateFormatter(tip.date)}</em>
-        </div>
-        {
-            isEditing ? (
-                <textarea 
-                    defaultValue={editContent ? editContent: tip.content}
-                    autoFocus 
-                    onChange={(e)=> setEditContent(e.target.value)}></textarea>
-            ):(
-                <p>{editContent ?  editContent : tip.content}</p>
-            )
-               
-        }
-        <div className={style.btnContainer}>
+
+            <div className={style.header}>
+                <h3>{tip.country}</h3>
+                <p>Posted on {dateFormatter(tip.date)}</p>
+            </div>
+
             {
                 isEditing ? (
-                    <button onClick={()=>handleEdit()}>Valider</button>
-                ) : (
-                    <button onClick={()=>setIsEditing(true)}>Edit</button>
+                    <textarea 
+                        defaultValue={editContent ? editContent: tip.content}
+                        autoFocus 
+                        onChange={(e)=> setEditContent(e.target.value)}></textarea>
+                ):(
+                    <p>{editContent ?  editContent : tip.content}</p>
                 )
+                
             }
-            <button onClick={() => {
-                if (window.confirm("Do you really want to delete this tip ?")) {
-                    handleDelete();
+
+            <div className={style.btnContainer}>
+                {
+                    isEditing ? (
+                        <button onClick={()=>handleEdit()}>Valider</button>
+                    ) : (
+                        <button onClick={()=>setIsEditing(true)}>Edit</button>
+                    )
                 }
-            }}>Delete</button>
+                {/* <button onClick={() => {
+                    if (window.confirm("Do you really want to delete this tip ?")) {
+                        handleDelete();
+                    }
+                }}>Delete</button> */}
 
 
-        </div>
-
+            </div>
        </div>
     );
 };

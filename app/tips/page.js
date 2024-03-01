@@ -14,7 +14,9 @@ const Tips = () => {
   const [content, setContent] = useState("");
   const [error, setError] = useState(false);
 
-    // fetch data via json-server of file db.json
+  /**
+   * fetch data via json-server of file db.json
+   */
   const getData = () => {
     try {
       axios
@@ -29,21 +31,26 @@ const Tips = () => {
     getData();
   }, []);
 
+  /**
+   * handle form submission
+   * @param {*} e the event object
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (content.length < 140) {
-      setError(true);
-    } else {
+      setError(true);  // Sets error state to true indicating the content is too short.
+    } else {  
+      // If content meets the length requirement, proceed to submit.
       axios.post("http://localhost:3004/articles", {
         country,
         content,
         date : Date.now()
       })
-      setError(false);
-      setCountry("");
-      setContent("");
-      getData();
+      setError(false); // Resets the error state to false indicating no error.
+      setCountry(""); // Resets the country input field to an empty string.
+      setContent(""); // Resets the content input field to an empty string.
+      getData(); // Calls the getData function to fetch the latest data.
     }
   };
 
@@ -65,7 +72,7 @@ const Tips = () => {
           onChange={(e) => setContent(e.target.value)}
           value={content}
         ></textarea>
-        {error && <p>Veuillez écrire un minimum de 140 caractères</p>}
+        {error && <p>Please write a minimum of 140 characters</p>}
         <input type="submit" value="Send" />
       </form>
       <ul>
