@@ -27,10 +27,19 @@
 
 ## 📝 Project Summary
 
-**Countries** is an application that displays the various flags of countries around the world. By clicking on a flag, the user can access three pieces of information about the country: its name, the name of its capital, and its population. The user can sort the number of flags they want to see displayed or filter countries by continent. The application contains a second page that explains how many countries are recognized in the world and how these countries are distributed.
+**Countries** is an application that displays the various flags of countries around the world. By clicking on a flag, the user can access three pieces of information about the country: its name, the name of its capital, and its population. The user can sort the number of flags they want to see displayed or filter countries by continent.
 
 <img src="/public/screenshot Home.png" alt="capture d'écran de la page d'accueil">
 
+
+
+The application contains also :
+- a page that explains how many countries are recognized in the world and how these countries are distributed.
+<img src="/public/screenshot-about.png" alt="capture d'écran de la page d'accueil">
+
+
+- A page where we can share travel tips by specifying the concerned country
+<img src="/public/screenshot-tips.png" alt="capture d'écran de la page d'accueil">
 
 ## 🚀 Run Locally
 1.Clone the countries repository:
