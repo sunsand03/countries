@@ -4,7 +4,7 @@ import style from '../../assets/styles/components/footer.module.scss'
 const Footer = () => {
     return (
         <div className={style.footer}>
-            <p>© Site réalisé par Sandrine IBRAIMA-NOMBO | 2024</p>
+            <p>© Site réalisé par Sandrine NOMBO | 2024</p>
         </div>
     );
 };
