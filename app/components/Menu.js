@@ -1,26 +1,30 @@
 "use client"
-import { useState } from 'react';
 import React from 'react';
 import Link from 'next/link'
+import { usePathname } from 'next/navigation';
 import styles from '../../assets/styles/components/menu.module.scss'
 
 const Menu = () => {
 
-    // Status to track active link
-    const [activeLink, setActiveLink] = useState('');
+      const navLinks = [
+        {name:"Home", href:"/"},
+        {name:"About the world", href:"/about"},
+        {name:"Tips", href:"/tips"}
+      ]
 
-    // function to update active link
-    const handleSetActiveLink = (link) => {
-        setActiveLink(link);
-      };
+      const pathname = usePathname();
 
     return (
         <div className={styles.menu}>
-            <ul>
-                <li className={activeLink ==='home' ? styles['nav-active'] : ''}><Link href='/' onClick={()=> handleSetActiveLink('home')}>Home</Link></li>
-                <li className={activeLink ==='about' ? styles['nav-active'] : ''}><Link href='/about'onClick={()=> handleSetActiveLink('about')}>About the world</Link></li>
-                <li className={activeLink ==='tips' ? styles['nav-active'] : ''}><Link href='/tips'onClick={()=> handleSetActiveLink('about')}>Tips</Link></li>
-            </ul>
+            {navLinks.map((link)=>{
+                // Check if the link is exactly equal to "/" for "Home" or starts with the href for the other links.
+                const isActive = link.href === "/" ? pathname === link.href : pathname.startsWith(link.href);
+                return(
+                    <Link href={link.href} key={link.name} className={isActive ? styles['nav-active'] : styles['inactive']}>
+                        {link.name}
+                    </Link>
+                )
+            })}
         </div>
     );
 };
