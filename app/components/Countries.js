@@ -5,11 +5,10 @@ import styles from "../../assets/styles/pages/countries.module.scss";
 import Card from "./Card";
 
 const Countries = () => {
-
   // status of data retrieved by the API
   const [data, setData] = useState([]);
 
-  // status for number of countries display 
+  // status for number of countries display
   const [rangeValue, setRangeValue] = useState(36);
 
   // array listing the continents
@@ -18,18 +17,23 @@ const Countries = () => {
   // status for selected continents
   const [selectedRadio, setSelectedRadio] = useState("");
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   // country data fetch
   useEffect(() => {
-      axios
-        .get("https://restcountries.com/v3.1/all")
-        .then((response) => {setData(response.data)})
-        .catch ((error) => {
-      console.log("les données n'ont pas été récupérées", error);
-    })
+    axios
+      .get("https://restcountries.com/v3.1/all")
+      .then((response) => {
+        setData(response.data);
+        setIsLoaded(true);        
+      })
+      .catch((error) => {
+        console.log("les données n'ont pas été récupérées", error);
+      });
   }, []);
 
   return (
-    <div className={styles.countries}>
+    <div className={styles.countries}>      
 
       <ul className={styles.radioContainer}>
         <input
@@ -41,30 +45,36 @@ const Countries = () => {
         />
         {radios.map((continent, index) => (
           <li key={index}>
-            <input 
-                type="radio" 
-                id={continent}
-                checked={continent === selectedRadio} 
-                onChange={(e)=> 
-                setSelectedRadio(e.target.id)}/>
+            <input
+              type="radio"
+              id={continent}
+              checked={continent === selectedRadio}
+              onChange={(e) => setSelectedRadio(e.target.id)}
+            />
             <label htmlFor={continent}>{continent}</label>
           </li>
         ))}
       </ul>
 
       {selectedRadio && (
-        <button onClick={()=> setSelectedRadio("")}>Annuler la recherche</button>
+        <button onClick={() => setSelectedRadio("")}>
+          Annuler la recherche
+        </button>
       )}
 
+      <h1>Learn the different flags of the countries of the world !</h1>
+
+      {!isLoaded && (<p>Loading....</p>)} 
+
       <ul>
-        {data            
-            .filter((country)=> country.continents[0].includes(selectedRadio))
-            .sort((a,b)=> b.population - a.population)
-            .slice(0, rangeValue).map((country, index) => (
-          <Card key={index} country={country} />
-        ))}
+        {data
+          .filter((country) => country.continents[0].includes(selectedRadio))
+          .sort((a, b) => b.population - a.population)
+          .slice(0, rangeValue)
+          .map((country, index) => (
+            <Card key={index} country={country} />
+          ))}
       </ul>
-      
     </div>
   );
 };
