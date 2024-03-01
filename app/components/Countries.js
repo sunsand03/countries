@@ -5,21 +5,22 @@ import styles from "../../assets/styles/pages/countries.module.scss";
 import Card from "./Card";
 
 const Countries = () => {
-  // status of data retrieved by the API
+  // state of data retrieved by the API
   const [data, setData] = useState([]);
 
-  // status for number of countries display
+  // State for the number of countries displayed
   const [rangeValue, setRangeValue] = useState(36);
 
   // array listing the continents
   const radios = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
-  // status for selected continents
+  // State for the selected continents
   const [selectedRadio, setSelectedRadio] = useState("");
 
+  // State of data loading
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // country data fetch
+  // Fetching data via the API
   useEffect(() => {
     axios
       .get("https://restcountries.com/v3.1/all")
@@ -35,6 +36,7 @@ const Countries = () => {
   return (
     <div className={styles.countries}>      
 
+      {/* Displays the bar to select the number of countries displayed or to filter them by continent */}
       <ul className={styles.radioContainer}>
         <input
           type="range"
@@ -56,6 +58,7 @@ const Countries = () => {
         ))}
       </ul>
 
+      {/* Create a button to remove the applied filter */}
       {selectedRadio && (
         <button onClick={() => setSelectedRadio("")}>
           Annuler la recherche
@@ -64,6 +67,7 @@ const Countries = () => {
 
       <h1>Learn the different flags of the countries of the world !</h1>
 
+      {/* Displays a paragraph when the data loading is not complete */}
       {!isLoaded && (<p>Loading....</p>)} 
 
       <ul>
